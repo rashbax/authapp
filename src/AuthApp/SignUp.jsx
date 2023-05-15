@@ -19,11 +19,11 @@ export default function SignUp() {
     try {
       if(confirPassword === password){
         await createUser(email, confirPassword)
-      navigate('/main')
+      
       }else {
         throw new Error('Confirmed password is wrong!')
       }
-      
+      navigate('/main')
     } catch (error) {
       setError(error.message)
       console.log(error.message)
@@ -36,7 +36,7 @@ export default function SignUp() {
     <div className='login'>
         <div className="login__body">
         <h3 className="login__title">Create Accaunt</h3>
-        <div className="login__form">
+        <form className="login__form"  onSubmit={handleSubmit}>
           <div className="login__form-cols">
             <EmailOutlined className='login__icon'/>
           <input type="text" placeholder='email' onChange={((e)=> setEmail(e.target.value))}/>
@@ -51,10 +51,10 @@ export default function SignUp() {
           </div>
           <p className="login__form-cols error__message">{error}</p>
           <div className="login__form-cols">
-            <button className="login__btn" onClick={handleSubmit}>Sign Up</button>
+            <button type='submit' className="login__btn">Sign Up</button>
           </div>
           
-        </div>
+        </form>
         <div className="login__link">
           <span>don't have an account?</span>
           <Link className='link' to='/'>

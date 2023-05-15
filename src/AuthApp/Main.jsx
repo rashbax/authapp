@@ -6,6 +6,7 @@ export default function Main() {
   const {user, logout} = UserAuth();
   const navigate = useNavigate()
 
+  
   const handleLogout = async () => {
     try {
       await logout()
